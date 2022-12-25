@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="form_template" name="Form Template">
+        <t t-call="website.layout">
+            <div class="container page-header">
+                <h1>New Reclamation</h1>
+            </div>
+            <div class="container mt-5">
+                <form method="post" action="/reclamations/create" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label for="source">Source : </label>
+                        <select class="form-control" name="source" id="source">
+                            <option value="telephone">telephone</option>
+                            <option value="email">email</option>
+                            <option value="social media">social media</option>
+                            <option value="autre">autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="localisation">Localisation : </label>
+                        <input type="text" class="form-control" id="localisation" name="localisation" />
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="type">Type : </label>
+                        <select class="form-control" name="type" id="type">
+                            <option value="eaux potable">eaux potable</option>
+                            <option value="assainissement">assainissement</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="images">Input an image</label>
+                        <input type="file" class="form-control-file" id="images" name="images" value="Choose images" />
+                    </div>
+                                    
+                    <button type="submit" class="btn btn-primary my-2">Add new reclamation</button>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>
